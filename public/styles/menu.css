@@ -91,7 +91,7 @@
     text-align: center; 
   }
 
-  .menu-btn {
+  .contact-btn {
    
     font-size: 16px; 
     background-color: #fff; 
@@ -100,16 +100,11 @@
     color: #EE7D43;
   }
  
-   .main-btn:hover {
+   .contact-btn:hover {
     cursor: pointer;
     transition: 0.3s;
     color: #EE7D43;
-  }
 
-  .contact-btn:hover {
-    cursor: pointer;
-    transition: 0.3s;
-    color: #EE7D43;
   }
 
   .sign-in-btn {
@@ -190,16 +185,6 @@
     }
   }
    
-
-  .main-menu {
-    display: flex;
-    
-    padding-top: 150px;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Rubik-Medium', sans-serif; /* Применение шрифта */
-   }
-
    .p-grey {
     color: #666666;
     padding: 5px;
@@ -208,15 +193,6 @@
    .p-orange {
     padding: 5px;
     color: #EE7D43;
-   }
-
-   .catalog {
-    font-family: 'Montserrat-SemiBold', sans-serif;
-    font-size: 50px;
-    line-height: 36px;
-    text-align: center;
-     margin-top: 20px;
-     margin-bottom: 50px;
    }
 
    .cont-img-1 {
@@ -231,7 +207,7 @@
    }
 
 .back-img {
-     
+  margin-top: 150px;
     max-width: calc(100% - 70px); /* Ограничиваем ширину изображения с учетом отступов */
     height: 385px; /* Высота автоматически подстраивается */
     min-height: 385px; /* Устанавливаем минимальную высоту изображения равной высоте контейнера */
@@ -249,7 +225,7 @@
      justify-content: center;
      align-items: center;
      font-family: 'Montserrat-Medium', sans-serif;
-     top: 380px;
+     top: 330px;
      line-height: 20px;
       position: absolute;
      transform: translate();

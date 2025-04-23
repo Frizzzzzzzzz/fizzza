@@ -58,7 +58,7 @@ app.get('/reg.html', (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  const { email, password } = req.body;
+  const { name, surname, email, password } = req.body;
   
   try {
       const userExists = await pool.query(
@@ -73,15 +73,17 @@ app.post('/register', async (req, res) => {
       const saltRounds = 10;
       const passwordHash = await bcrypt.hash(password, saltRounds);
       
-      const newUser  = await pool.query(
-          'INSERT INTO users (email, password_hash, role) VALUES ($1, $2, $3) RETURNING id, email, role',
-          [email, passwordHash, 1]
-      );
+      const newUser = await pool.query(
+        'INSERT INTO users (name, surname, email, password_hash, role) VALUES ($1, $2, $3, $4, $5) RETURNING id, name, surname, email, role',
+        [name, surname, email, passwordHash, 1]
+    );
       
       const payload = {
-          id: newUser .rows[0].id,
-          email: newUser .rows[0].email,
-          role: newUser .rows[0].role
+          id: newUser.rows[0].id,
+          name: newUser.rows[0].name,
+          surname: newUser.rows[0].surname,
+          email: newUser.rows[0].email,
+          role: newUser.rows[0].role
       };
       
       const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
@@ -96,9 +98,11 @@ app.post('/register', async (req, res) => {
       res.status(201).json({ 
           message: 'Регистрация успешна',
           user: {
-              id: newUser.rows[0].id,
-              email: newUser.rows[0].email,
-              role: newUser.rows[0].role
+            id: newUser.rows[0].id,
+            name: newUser.rows[0].name,
+            surname: newUser.rows[0].surname,
+            email: newUser.rows[0].email,
+            role: newUser.rows[0].role
           },
           token: token
       });
@@ -120,6 +124,10 @@ app.post('/login', async (req, res) => {
           return res.status(400).json({ message: 'Пользователь не найден' });
       }
 
+      if (!user.password_hash) {
+          return res.status(500).json({ message: 'Ошибка сервера: некорректные данные пользователя' });
+      }
+
       const isPasswordValid = await bcrypt.compare(password, user.password_hash);
       
       if (!isPasswordValid) {
@@ -128,11 +136,14 @@ app.post('/login', async (req, res) => {
 
       const payload = {
           id: user.id,
+          name: user.name,
+          surname: user.surname,
           email: user.email,
           role: user.role
       };
 
       const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
+      
       res.cookie('authToken', token, {
           secure: process.env.NODE_ENV === 'production',
           httpOnly: true,
@@ -140,7 +151,12 @@ app.post('/login', async (req, res) => {
           sameSite: 'strict'
       });
 
-      res.status(200).json({ message: 'Успешный вход', token: token });
+      res.status(200).json({ 
+          message: 'Успешный вход',
+          user: payload,
+          token: token
+      });
+      
   } catch (error) {
       console.error('Ошибка при входе:', error);
       res.status(500).json({ message: 'Ошибка сервера' });

@@ -100,19 +100,18 @@
      
   }
   
-  .main-btn, .menu-btn, .contact-btn, .search-btn, .wishlist-btn {
+ 
+   .menu-btn, .contact-btn, .search-btn, .wishlist-btn {
     font-size: 14px; 
     background-color: #fff; 
     border: none;
     color: black;
     font-family: 'Poppins-Regular', sans-serif;
     transition: 0.3s;
-     
     text-align: center; 
   }
 
   .main-btn {
-   
     font-size: 14px; 
     background-color: #fff; 
     border: none;

@@ -1,10 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.reg-signin-btn').addEventListener('click', async () => {
-        const email = document.querySelector('.reg-mail-textarea').value;
-        const password = document.querySelector('.reg-password-textarea').value;
+        const email = document.querySelector('.reg-textarea[type="email"]').value;
+        const password = document.querySelector('.reg-textarea[type="password"]').value;
+        const name = document.querySelector('.reg-fio-textarea[placeholder="Ваше имя"]').value;
+        const surname = document.querySelector('.reg-fio-textarea[placeholder="Ваша фамилия"]').value;
+        const repeatPassword = document.querySelectorAll('.reg-textarea[type="password"]')[1].value;
       
-        if (!email || !password) {
-            alert('Заполните все поля!');
+        if (!email || !password || !name || !surname) {
+            alert('Заполните все обязательные поля!');
+            return;
+        }
+        
+        if (password !== repeatPassword) {
+            alert('Пароли не совпадают!');
             return;
         }
       
@@ -14,7 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({
+                    name: name,
+                    surname: surname,
+                    email: email,
+                    password: password
+                }),
             });
           
             const result = await response.json();
