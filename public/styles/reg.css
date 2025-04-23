@@ -107,19 +107,6 @@ body {
     font-weight: 400;
     padding-bottom: 40px;
 }
-textarea {
-    height: 65px;
-    width: 440px;
-    background: #F3F4F6;
-    border: none;
-    margin-bottom: 20px;
-    resize: none;
-    border-radius: 8px;
-    padding-top: 22px;
-    padding-left: 22px;
-    font-size: 16px;
-    font-family: 'Inter-Regular';
-}
 textarea:focus {
     border: none;
     box-shadow: none;
@@ -168,7 +155,7 @@ textarea:focus {
     border-radius: 6px;
     background-color: #EE7D43;
     color: #FFFFFF;
-    width: 440px;
+    width: 500px;
     height: 69px;
     margin-top: 22px;
     font-size: 16px;
@@ -181,4 +168,67 @@ textarea:focus {
     border: 1px solid #EE7D43;
     background-color: #FFFFFF;
     transition: 0.3s;
+}
+
+.flex-direction {
+    display: flex;
+    max-width: 400px;
+    gap: 20px
+}
+
+.reg-password-textarea-2 {
+    height: 65px;
+    width: 500px;
+    background: #F3F4F6;
+    border: none;
+    margin-bottom: 20px;
+    resize: none;
+    border-radius: 8px;
+    padding-top: 22px;
+    padding-left: 22px;
+    font-size: 16px;
+    font-family: 'Inter-Regular';
+}
+
+.reg-password-textarea {
+    height: 65px;
+    width: 500px;
+    background: #F3F4F6;
+    border: none;
+    margin-bottom: 20px;
+    resize: none;
+    border-radius: 8px;
+    padding-top: 22px;
+    padding-left: 22px;
+    font-size: 16px;
+    font-family: 'Inter-Regular';
+}
+
+.reg-mail-textarea {
+    height: 65px;
+    width: 500px;
+    background: #F3F4F6;
+    border: none;
+    margin-bottom: 20px;
+    resize: none;
+    border-radius: 8px;
+    padding-top: 22px;
+    padding-left: 22px;
+    font-size: 16px;
+    font-family: 'Inter-Regular';
+}
+
+.reg-mail-textarea3 {
+    display: flex;
+    height: 65px;
+    width: 240px;
+    background: #F3F4F6;
+    border: none;
+    margin-bottom: 20px;
+    resize: none;
+    border-radius: 8px;
+    padding-top: 22px;
+    padding-left: 22px;
+    font-size: 16px;
+    font-family: 'Inter-Regular';
 }
