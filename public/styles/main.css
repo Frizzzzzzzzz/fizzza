@@ -1,3 +1,11 @@
+.reviews > div {
+  display: none; /* Скрываем все отзывы по умолчанию */
+}
+
+.review-block-1.active {
+    display: block; /* Показываем активный блок */
+}
+
 @font-face {
     font-family: 'Rubik-Medium';
     src: url('../assets/fonts/Rubik-Medium.ttf');
@@ -161,9 +169,6 @@
     .btns-cont-1 {
       display: flex;
       gap: 20px;
-      
-         
-      
     }
     .btns-cont-2 {
       display: flex;
@@ -374,7 +379,7 @@
     gap: 30px;
     margin-top: 20px;
     padding-bottom: 50px;
-    
+    overflow: hidden;
    }
    .reviews h1 {
     font-family: 'Montserrat-Medium' , sans-serif;
@@ -404,6 +409,7 @@
     padding: 20px;
     width: 550px;
     height: 439px;
+
    }
     .review-block-1 p  {
        line-height: 155%;
