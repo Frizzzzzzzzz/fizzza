@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/basket.css">
+    <title>FizzaPizza/basket</title>
+</head>
+<body>
+    <header>
+        <div class="schedule">Мы работаем 24 на 7</div>
+        <nav class="navigator">
+            
+            <img class="logo" src="assets/Group 50.png" alt="">
+       
+           <div class="btns-cont-1">
+            <button class="main-btn" onclick="window.location.href='/main.html'">Главная</button>
+                <button class="menu-btn" onclick="window.location.href='/menu.html'">Меню</button> 
+                <button class="contact-btn" onclick="window.location.href='/main.html'">Контакт</button>
+           </div>
+           <div class="btns-cont-2">
+            <button class="search-btn"><img src="assets/akar-icons_search.png" alt=""></button>
+            <button class="wishlist-btn"><img src="assets/Group 2(1).png" alt=""></button>
+           </div>
+        </nav>
+    </header>
+    <main>
+        <section class="your-basket-txt">
+            <p class="main-basket-txt">Главная > <span>Корзина</span></p>
+            <h1>Ваша корзина</h1>
+            <p class="tovary-cost-basket-txt">3 товара / 1030 руб.</p>
+        </section>
+        <section class="basket-tables">
+ 
+                <div class="basket-sos-table">
+                    <div class="pizza-block">  
+                        <img class="pizza-img" src="assets\Ellipse 3.png" alt="">
+                        <div class="pizza-txt">
+                            <div class="pizzatxt3">
+                            <h3>Трио</h3>
+                            <p>С ананасами 2 шт.</p>
+                            <p>Маргаритта 3 шт.</p>
+                           </div>
+                            <p class="sale-orange">Скидка по акции "Пицца в подарок"</p>
+                        </div>
+                        <div class="buttons1">
+                            <button>-</button>
+                            <p>1</p>
+                            <button>+</button>
+                        </div>
+                        <div class="sale-cost-txt">
+                            <p>Цена: <span>950 руб.</span></p>
+                            <p>Скидка: <span>-30 руб.</span></p>
+                        </div>
+                        <button class="krestik"><img src="assets\Vector.png" alt=""></button>
+                    </div>
+                    <hr>
+                    <div class="upakovka">
+                        <div class="grey-block1"></div>
+                        <p class="upakovka-txt">Упаковка</p>
+                    <div class="buttons2">
+                        <button>-</button>
+                        <p>1</p>
+                        <button>+</button>
+                    </div>
+                    <p class="cost-txt">Цена: <span>10 руб.</span></p>
+                    <button class="krestik"><img src="assets\Vector.png" alt=""></button>
+                   </div>
+                   <hr>
+                   <div class="action">
+                        <div class="grey-block2"></div>
+                        <p class="action-txt">Акция пицца в подарок</p>
+                        <div class="buttons3">
+                            <button>-</button>
+                            <p>1</p>
+                            <button>+</button>
+                        </div>
+                        <p class="cost-txt">Цена: <span>30 руб.</span></p>
+                        <button class="krestik"><img src="assets\Vector.png" alt=""></button>
+                   </div>
+                   <hr>
+                   <div class="finalcost">
+                        <p class="finalcost-txt">Общая стоимость Вашей покупки без учёта доставки составит:</p>
+                        <div class="costs">
+                            <p>1970 руб.</p>
+                            <p class="cost-line">2100 руб.</p>
+                        </div>
+                   </div>
+                </div>
+                    
+                
+
+            <div class="basket-cost-table">
+                <div class="final-txt">
+                    <h2>Итого</h2>
+                    <div class="product-cost">
+                        <p>Стоимость товара</p>
+                        <div class="line1"> </div>
+                        <p>700 руб</p>
+                    </div>
+                    <div class="product-cost">
+                        <p>Скидка</p>
+                        <div class="line2"> </div>
+                        <p>0 руб</p>
+                    </div>
+                    <div class="product-cost">
+                        <p>Доставка</p>
+                        <div class="line3"> </div>
+                        <p>400 руб</p>
+                    </div>
+                    
+                </div>
+                <hr class="final-line">
+                <div class="k-oplate-section">
+                    <p class="k-oplate-txt">К оплате</p>
+                    <p class="k-oplate-cost">1100 руб</p>
+                </div>
+                <hr>
+                <div class="promo-section">
+                    <p class="promo-txt">Промокод:</p>
+                    <textarea class="promo-textarea" placeholder="Введите промокод" required></textarea>
+                    <button class="promo-textarea-apply-btn">Применить</button>
+                </div>
+                <div class="place-an-order-btn-block">
+                   <button class="place-an-order-btn">Оформить заказ</button>
+               </div>
+            </div>
+        </section>
+        <section class="delivery-section-blocks">
+            <div class="delivery-section-block">
+                <div class="delivery-h-txt">
+                    <h1>Доставка</h1>
+                    <p>Укажите контактные данные и выберите способ доставки</p>
+                </div>
+                <div class="delivery-textareas">
+                    <div class="two-textareas">
+                        <div class="textarea-1">
+                            <p>Ваше имя*</p>
+                            <textarea placeholder="Укажите имя" required></textarea>
+                        </div>
+                        <div class="textarea-2">
+                            <p>Ваш телефон*</p>
+                            <textarea placeholder="+7 (___) ___-__-__" required></textarea>
+                        </div>
+                    </div>
+                    <div class="address-textarea-block">
+                        <p>Адрес доставки</p>
+                        <textarea class="address-textarea" placeholder="Не нужно заполнять при самовывозе"></textarea>
+                    </div>
+                    <div class="date-of-receipt-section">
+                        <p>Дата получения</p>
+                        <div class="date-of-receipt-block">
+                            <p class="time">12:00 - 16:00</p>
+                        <button><img src="assets\Vector2.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="commentary-section">
+                        <p>Комментарий к заказу</p>
+                        <textarea class="commentary-textarea" placeholder="Здесь Вы можете написать пожелания, относительно анонимной доставки, текста, открытки и другое."></textarea>
+                    </div>
+                    <div class="pay-method-section">
+                        <p>Метод оплаты</p>
+                        <div class="pay-method-btns">
+                            <div>
+                                <button></button>
+                                <h4>Оплата картой онлайн</h4>
+                            </div>
+                            <div>
+                                <button></button>
+                                <h4>Наличными при получении</h4>
+                            </div>
+                            <div>
+                                <button></button>
+                                <h4>Яндекс деньги</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="start">
+                <div class="final-cost-w-delivery-section">
+                    <p>Итоговая сумма заказа вместе с доставкой:</p>
+                    <h3>1400 руб.</h3>
+                </div>
+                <hr class="end">
+                 <div class="place-an-order-btn-main-section">
+                    <button class="place-an-order-btn-main">Оформить заказ</button>
+                 </div>
+                 <p class="p-c">Нажимая на кнопку "Оформить заказ" Я принимаю и соглашаюсь с <a>Договором оферты</a> и разрешаю обработку моих персональных данных в соответствии с <a>Политикой конфиденциальности</a></p>
+            </div>
+            <div class="empty-delivery-block"></div>
+        </section>
+    </main>
+</body>
+</html>
