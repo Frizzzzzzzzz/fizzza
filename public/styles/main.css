@@ -92,7 +92,7 @@
   .btns-cont-1 {
     display: flex; 
     align-items: center; 
-    font-family: 'Poppins-Regular', sans-serif;
+
     justify-content: center;
     position: absolute;
     gap: 50px;
@@ -101,29 +101,26 @@
    .btns-cont-2 {
     display: flex; 
     align-items: center; 
-     justify-content: flex-end;
-    font-family: 'Rubik-Medium ', sans-serif;
-   
+    justify-content: flex-end;
     gap: 50px;
-     
   }
   
  
    .menu-btn, .contact-btn, .search-btn, .wishlist-btn {
-    font-size: 14px; 
+    font-size: 16px; 
     background-color: #fff; 
     border: none;
     color: black;
-    font-family: 'Poppins-Regular', sans-serif;
+    font-family: 'Rubik-Medium', sans-serif;
     transition: 0.3s;
     text-align: center; 
   }
 
   .main-btn {
-    font-size: 14px; 
+    font-size: 16px; 
     background-color: #fff; 
     border: none;
-    font-family: 'Poppins-Regular', sans-serif;
+    font-family: 'Rubik-Medium', sans-serif;
     color: #EE7D43;
   }
  

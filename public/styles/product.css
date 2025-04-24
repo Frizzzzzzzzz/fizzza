@@ -58,6 +58,8 @@
 .header {
     display: flex;
     flex-direction: column;  
+    font-family: "Rubik-Medium";
+    font-size: 16px;
   }
   
   .schedule {
