@@ -136,11 +136,11 @@
     
     .main-btn, .menu-btn, .contact-btn, .search-btn, .wishlist-btn  {
      
-      font-size: 14px; 
+      font-size: 16px; 
       background-color: #fff; 
       border: none;
       color: black;
-      font-family: 'Poppins-Regular', sans-serif;
+      font-family: 'Rubik-Medium', sans-serif;
       font-weight: 500;
       transition: 0.3s;
        
@@ -148,12 +148,10 @@
     }
   
     .menu-btn {
-     
-      font-size: 14px; 
       background-color: #fff; 
       border: none;
-      font-family: 'Poppins-Regular', sans-serif;
-      font-weight: 500;
+       
+     
     }
     .menu-btn:hover {
       cursor: pointer;
