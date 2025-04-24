@@ -1,32 +1,44 @@
 [
     {
-        "name": "Картофель фри",
+        "name": "Рыбные палочки",
         "price": "150 рублей",
-        "image": "dataset/images/snack1.png",
+        "image": "dataset/snacks/15476824.png",
         "rating": 4.5
     },
     {
-        "name": "Наггетсы",
+        "name": "Ботат фри",
         "price": "200 рублей",
-        "image": "dataset/images/snack2.png",
+        "image": "dataset/snacks/72146478.png",
         "rating": 4.6
     },
     {
-        "name": "Луковые кольца",
+        "name": "Куриные крылышки",
         "price": "100 рублей",
-        "image": "dataset/images/snack3.png",
+        "image": "dataset/snacks/75561830.png",
         "rating": 4.3
     },
     {
-        "name": "Куриные крылышки",
+        "name": "Креветки",
         "price": "250 рублей",
-        "image": "dataset/images/snack4.png",
+        "image": "dataset/snacks/84565533.png",
         "rating": 4.7
     },
     {
-        "name": "Сырные палочки",
+        "name": "Катошка с сыром",
         "price": "200 рублей",
-        "image": "dataset/images/snack5.png",
+        "image": "dataset/snacks/chili-cheese-fries.jpg",
         "rating": 4.4
+    },
+    {
+        "name": "Картофель фри",
+        "price": "150 рублей",
+        "image": "dataset/snacks/CJ_Site_705x742_Natu.jpg",
+        "rating": 4.5
+    },
+    {
+        "name": "Луковые кольца",
+        "price": "200 рублей",
+        "image": "dataset/snacks/CJ_Site_705x742_Onio.jpg",
+        "rating": 4.6
     }
 ]
