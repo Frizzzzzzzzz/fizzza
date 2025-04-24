@@ -1,9 +1,9 @@
 .reviews > div {
-  display: none; /* Скрываем все отзывы по умолчанию */
+  display: none;
 }
 
 .review-block-1.active {
-    display: block; /* Показываем активный блок */
+    display: block; 
 }
 
 @font-face {

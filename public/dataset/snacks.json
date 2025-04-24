@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Картофель фри",
+        "price": "150 рублей",
+        "image": "dataset/images/snack1.png",
+        "rating": 4.5
+    },
+    {
+        "name": "Наггетсы",
+        "price": "200 рублей",
+        "image": "dataset/images/snack2.png",
+        "rating": 4.6
+    },
+    {
+        "name": "Луковые кольца",
+        "price": "100 рублей",
+        "image": "dataset/images/snack3.png",
+        "rating": 4.3
+    },
+    {
+        "name": "Куриные крылышки",
+        "price": "250 рублей",
+        "image": "dataset/images/snack4.png",
+        "rating": 4.7
+    },
+    {
+        "name": "Сырные палочки",
+        "price": "200 рублей",
+        "image": "dataset/images/snack5.png",
+        "rating": 4.4
+    }
+]
