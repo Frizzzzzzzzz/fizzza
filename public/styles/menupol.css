@@ -260,7 +260,6 @@
    }
 
 .back-img {
-  margin-top: 150px;
     max-width: calc(100% - 70px); /* Ограничиваем ширину изображения с учетом отступов */
     height: 385px; /* Высота автоматически подстраивается */
     min-height: 385px; /* Устанавливаем минимальную высоту изображения равной высоте контейнера */
@@ -278,7 +277,7 @@
      justify-content: center;
      align-items: center;
      font-family: 'Montserrat-Medium', sans-serif;
-     top: 400px;
+     top: 280px;
      line-height: 20px;
       position: absolute;
      transform: translate();
