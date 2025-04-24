@@ -163,6 +163,27 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.get('/all-food', async (req, res) => {
+    try {
+        const pizzas = await fs.promises.readFile(path.join(__dirname, '..', 'public', 'dataset', 'pizza.json'), 'utf8');
+        const burgers = await fs.promises.readFile(path.join(__dirname, '..', 'public', 'dataset', 'burgers.json'), 'utf8');
+        const drinks = await fs.promises.readFile(path.join(__dirname, '..', 'public', 'dataset', 'drinks.json'), 'utf8');
+        const salads = await fs.promises.readFile(path.join(__dirname, '..', 'public', 'dataset', 'salad.json'), 'utf8');
+        const snacks = await fs.promises.readFile(path.join(__dirname, '..', 'public', 'dataset', 'snacks.json'), 'utf8');
+
+        res.json({
+            pizzas: JSON.parse(pizzas),
+            burgers: JSON.parse(burgers),
+            drinks: JSON.parse(drinks),
+            salads: JSON.parse(salads),
+            snacks: JSON.parse(snacks),
+        });
+    } catch (error) {
+        console.error('Ошибка при чтении файлов:', error);
+        res.status(500).send('Ошибка сервера');
+    }
+});
+
 app.get('/log.html', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'auth.html'));
 });
