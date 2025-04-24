@@ -118,6 +118,17 @@ function createFoodCard(item) {
 function showSection(sectionId) {
     const contentContainer = document.getElementById('content-container');
     contentContainer.innerHTML = '';
+    
+    const buttons = document.querySelectorAll('.food-class-button');
+    buttons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    const activeButton = Array.from(buttons).find(button => button.onclick.toString().includes(sectionId));
+    if (activeButton) {
+        activeButton.classList.add('active');
+    }
+
     switch (sectionId) {
         case 'pizza-container':
             contentContainer.innerHTML = `

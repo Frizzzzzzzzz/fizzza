@@ -353,7 +353,6 @@
       display: flex;
       flex-direction: column;
       gap: 35px;
-      padding-top: 50px;
     }
     .sale-cost-txt {
       font-family: 'Montserrat-SemiBold';
@@ -364,12 +363,11 @@
       color: #EE7D43;
     }
     .krestik {
-      position: absolute;
+      padding-left: 110px;
       width: 12px;
       height: 12px;
       border: none;
       background: none;
-      transform: translate(645px , -45px);
     }
 
     .upakovka {

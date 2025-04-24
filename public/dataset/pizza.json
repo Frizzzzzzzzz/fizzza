@@ -16,17 +16,5 @@
         "price": "550 рублей",
         "image": "dataset/images/image(8).png",
         "rating": 4.2
-    },
-    {
-        "name": "Гавайская",
-        "price": "550 рублей",
-        "image": "dataset/images/image(8).png",
-        "rating": 4.2
-    },
-    {
-        "name": "Гавайская",
-        "price": "550 рублей",
-        "image": "dataset/images/image(8).png",
-        "rating": 4.2
     }
 ]
