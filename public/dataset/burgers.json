@@ -1,5 +1,36 @@
 [
     {
+        "name": "Чизбургер",
+        "price": "300 рублей",
+        "image": "dataset/images/burger1.png",
+        "rating": 4.6
+    },
+    {
+        "name": "Бургер с курицей",
+        "price": "350 рублей",
+        "image": "dataset/images/burger2.png",
+        "rating": 4.5
+    },
+    {
+        "name": "Вегетарианский бургер",
+        "price": "400 рублей",
+        "image": "dataset/images/burger3.png",
+        "rating": 4.3
+    },
+    {
+        "name": "Бургер с беконом",
+        "price": "450 рублей",
+        "image": "dataset/images/burger4.png",
+        "rating": 4.8
+    },
+    {
+        "name": "Гамбургер",
+        "price": "250 рублей",
+        "image": "dataset/images/burger5.png",
+        "rating": 4.2
+    }
+[
+    {
         "name": "Двойной",
         "price": "300 рублей",
         "image": "dataset/burgers/11337353.png",

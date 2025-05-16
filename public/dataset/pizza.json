@@ -1,5 +1,36 @@
 [
     {
+        "name": "Маргарита",
+        "price": "450 рублей",
+        "image": "dataset/images/image(8).png",
+        "rating": 3.5
+    },
+    {
+        "name": "Пепперони",
+        "price": "500 рублей",
+        "image": "dataset/images/image(8).png",
+        "rating": 4.7
+    },
+    {
+        "name": "Гавайская",
+        "price": "550 рублей",
+        "image": "dataset/images/image(8).png",
+        "rating": 4.2
+    },
+    {
+        "name": "Гавайская",
+        "price": "550 рублей",
+        "image": "dataset/images/image(8).png",
+        "rating": 4.2
+    },
+    {
+        "name": "Гавайская",
+        "price": "550 рублей",
+        "image": "dataset/images/image(8).png",
+        "rating": 4.2
+    }
+[
+    {
         "name": "Пицца 4 сыра",
         "price": "450 рублей",
         "image": "dataset/pizza/10241024pizza4sira20.png",
