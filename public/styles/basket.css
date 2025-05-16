@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 @font-face {
     font-family: 'Rubik-Medium';
     src: url('../assets/fonts/Rubik-Medium.ttf');
@@ -287,21 +291,20 @@
     }
     .basket-sos-table {
       width: 670px;
-      height: 453px;
+      height: auto;
       border: 1px solid #EDEDF0;
       border-radius: 5px;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
     }
     .pizza-block {
       display: flex;
-       justify-content: start;
-       align-items: center;
-      
+      justify-content: space-between;
+      padding: 10px;
+      align-items: center;
     }
     .pizza-img {
-      width: 80px;
+      width: 90px;
       height: 80px;
       margin-left: 20px;
       margin-right: 20px;
@@ -310,8 +313,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      width: 100px;
       gap: 40px;
-      margin-right: 60px;
     }
     .pizzatxt3 {
       font-size: 12px;
@@ -353,7 +356,6 @@
       display: flex;
       flex-direction: column;
       gap: 35px;
-      padding-top: 50px;
     }
     .sale-cost-txt {
       font-family: 'Montserrat-SemiBold';
@@ -364,12 +366,13 @@
       color: #EE7D43;
     }
     .krestik {
-      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
       width: 12px;
       height: 12px;
       border: none;
       background: none;
-      transform: translate(645px , -45px);
     }
 
     .upakovka {
@@ -814,3 +817,22 @@
       color: #4E9DD3;
       text-decoration: underline;
     }
+
+    .cart-counter {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+  }
+  
+  .wishlist-btn {
+      position: relative;
+  }

@@ -112,12 +112,64 @@ function createFoodCard(item) {
             </div>
         </div>
     `;
+    
+    const plusButton = card.querySelector('.plus');
+    plusButton.addEventListener('click', () => {
+        addToCart(item);
+    });
+    
     return card;
+}
+
+function addToCart(item) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    const newCartItem = {
+        ...item,
+        cartItemId: Date.now(),
+        quantity: 1
+    };
+    
+    cart.push(newCartItem);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert(`Товар "${item.name}" добавлен в корзину!`);
+}
+
+
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    const cartCounter = document.querySelector('.cart-counter');
+    if (cartCounter) {
+        cartCounter.textContent = totalItems;
+    }
+}
+
+function calculateTotal() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    return cart.reduce((sum, item) => {
+        const price = parseFloat(item.price.replace(' руб.', ''));
+        return sum + (price * item.quantity);
+    }, 0);
 }
 
 function showSection(sectionId) {
     const contentContainer = document.getElementById('content-container');
     contentContainer.innerHTML = '';
+    
+    const buttons = document.querySelectorAll('.food-class-button');
+    buttons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    const activeButton = Array.from(buttons).find(button => button.onclick.toString().includes(sectionId));
+    if (activeButton) {
+        activeButton.classList.add('active');
+    }
+
     switch (sectionId) {
         case 'pizza-container':
             contentContainer.innerHTML = `

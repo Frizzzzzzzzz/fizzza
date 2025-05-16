@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/basket.css">
+    <script src="./scripts/basket.js"></script>
     <title>FizzaPizza/basket</title>
 </head>
 <body>
     <header>
         <div class="schedule">Мы работаем 24 на 7</div>
         <nav class="navigator">
-            
             <img class="logo" src="assets/Group 50.png" alt="">
-       
            <div class="btns-cont-1">
             <button class="main-btn" onclick="window.location.href='/main.html'">Главная</button>
                 <button class="menu-btn" onclick="window.location.href='/menupol.html'">Меню</button> 
@@ -20,7 +19,6 @@
            </div>
            <div class="btns-cont-2">
             <button class="search-btn"><img src="assets/akar-icons_search.png" alt=""></button>
-            <button class="wishlist-btn"><img src="assets/Group 2(1).png" alt=""></button>
             <button class="wishlist-btn" onclick="window.location.href='/basket.html'"><img src="assets/Group 2.png" alt=""></button>
             <button class="sign-in-btn"><img src="assets/carbon_login.png" alt="">Войти</button>
            </div>
@@ -30,92 +28,41 @@
         <section class="your-basket-txt">
             <p class="main-basket-txt">Главная > <span>Корзина</span></p>
             <h1>Ваша корзина</h1>
-            <p class="tovary-cost-basket-txt">3 товара / 1030 руб.</p>
         </section>
         <section class="basket-tables">
- 
                 <div class="basket-sos-table">
-                    <div class="pizza-block">  
-                        <img class="pizza-img" src="assets\Ellipse 3.png" alt="">
-                        <div class="pizza-txt">
-                            <div class="pizzatxt3">
-                            <h3>Трио</h3>
-                            <p>С ананасами 2 шт.</p>
-                            <p>Маргаритта 3 шт.</p>
-                           </div>
-                            <p class="sale-orange">Скидка по акции "Пицца в подарок"</p>
-                        </div>
-                        <div class="buttons1">
-                            <button>-</button>
-                            <p>1</p>
-                            <button>+</button>
-                        </div>
-                        <div class="sale-cost-txt">
-                            <p>Цена: <span>950 руб.</span></p>
-                            <p>Скидка: <span>-30 руб.</span></p>
-                        </div>
-                        <button class="krestik"><img src="assets\Vector.png" alt=""></button>
-                    </div>
-                    <hr>
-                    <div class="upakovka">
-                        <div class="grey-block1"></div>
-                        <p class="upakovka-txt">Упаковка</p>
-                    <div class="buttons2">
-                        <button>-</button>
-                        <p>1</p>
-                        <button>+</button>
-                    </div>
-                    <p class="cost-txt">Цена: <span>10 руб.</span></p>
-                    <button class="krestik"><img src="assets\Vector.png" alt=""></button>
-                   </div>
-                   <hr>
-                   <div class="action">
-                        <div class="grey-block2"></div>
-                        <p class="action-txt">Акция пицца в подарок</p>
-                        <div class="buttons3">
-                            <button>-</button>
-                            <p>1</p>
-                            <button>+</button>
-                        </div>
-                        <p class="cost-txt">Цена: <span>30 руб.</span></p>
-                        <button class="krestik"><img src="assets\Vector.png" alt=""></button>
-                   </div>
-                   <hr>
                    <div class="finalcost">
                         <p class="finalcost-txt">Общая стоимость Вашей покупки без учёта доставки составит:</p>
                         <div class="costs">
-                            <p>1970 руб.</p>
-                            <p class="cost-line">2100 руб.</p>
+                            <p id="total-without-delivery">0 руб.</p>
+                            <p class="cost-line" id="original-total">0 руб.</p>
                         </div>
                    </div>
                 </div>
                     
-                
-
             <div class="basket-cost-table">
                 <div class="final-txt">
                     <h2>Итого</h2>
                     <div class="product-cost">
-                        <p>Стоимость товара</p>
+                        <p>Стоимость товаров</p>
                         <div class="line1"> </div>
-                        <p>700 руб</p>
+                        <p id="products-total">0 руб</p>
                     </div>
                     <div class="product-cost">
                         <p>Скидка</p>
                         <div class="line2"> </div>
-                        <p>0 руб</p>
+                        <p id="discount-value">0 руб</p>
                     </div>
                     <div class="product-cost">
                         <p>Доставка</p>
                         <div class="line3"> </div>
-                        <p>400 руб</p>
+                        <p id="delivery-cost">400 руб</p>
                     </div>
-                    
                 </div>
                 <hr class="final-line">
                 <div class="k-oplate-section">
                     <p class="k-oplate-txt">К оплате</p>
-                    <p class="k-oplate-cost">1100 руб</p>
+                    <p class="k-oplate-cost" id="total-to-pay">400 руб</p>
                 </div>
                 <hr>
                 <div class="promo-section">
@@ -181,7 +128,7 @@
                 <hr class="start">
                 <div class="final-cost-w-delivery-section">
                     <p>Итоговая сумма заказа вместе с доставкой:</p>
-                    <h3>1400 руб.</h3>
+                    <h3 id="final-total-with-delivery">400 руб.</h3>
                 </div>
                 <hr class="end">
                  <div class="place-an-order-btn-main-section">
