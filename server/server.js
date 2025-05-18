@@ -38,7 +38,6 @@ const authMiddleware = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, secretKey);
     req.user = decoded;
-    console.log(decoded);
     next();
   } catch (error) {
     return res.status(401).json({ message: 'Неверный токен' });
@@ -53,64 +52,136 @@ app.get('/menu.html', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'menu.html'));
 });
 
+app.get('/settings.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'account-settings.html'));
+});
+
+app.get('/history.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'account-history.html'));
+});
+
 app.get('/reg.html', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'reg.html'));
 });
 
-app.post('/register', async (req, res) => {
-  const { name, surname, email, password } = req.body;
-  
+app.post('/user/update', authMiddleware, async (req, res) => {
+    try {
+        const { name, surname, email, phone, address } = req.body;
+        const userId = req.user.id;
+        const result = await pool.query(
+            `UPDATE users 
+             SET name = $1, surname = $2, email = $3, phone = $4, address = $5
+             WHERE id = $6
+             RETURNING id, name, surname, email, phone, address, role`,
+            [name, surname, email, phone, address, userId]
+        );
+
+        const updatedUser = result.rows[0];
+
+        const payload = {
+            id: updatedUser.id,
+            name: updatedUser.name,
+            surname: updatedUser.surname,
+            email: updatedUser.email,
+            phone: updatedUser.phone || '',
+            address: updatedUser.address || '',
+            role: updatedUser.role
+        };
+
+        const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
+
+        res.status(200).json({ 
+            message: 'Данные успешно обновлены',
+            user: payload,
+            token: token
+        });
+    } catch (error) {
+        console.error('Ошибка при обновлении:', error);
+        res.status(500).json({ message: 'Ошибка сервера' });
+    }
+});
+
+app.get('/user', authMiddleware, async (req, res) => {
   try {
-      const userExists = await pool.query(
-          'SELECT id FROM users WHERE email = $1',
-          [email]
-      );
-      
-      if (userExists.rows.length > 0) {
-          return res.status(400).json({ message: 'Пользователь с таким email уже существует' });
-      }
-      
-      const saltRounds = 10;
-      const passwordHash = await bcrypt.hash(password, saltRounds);
-      
-      const newUser = await pool.query(
-        'INSERT INTO users (name, surname, email, password_hash, role) VALUES ($1, $2, $3, $4, $5) RETURNING id, name, surname, email, role',
-        [name, surname, email, passwordHash, 1]
+    const userId = req.user.id;
+
+    const result = await pool.query(
+      'SELECT id, name, surname, email, phone, address FROM users WHERE id = $1',
+      [userId]
     );
-      
-      const payload = {
-          id: newUser.rows[0].id,
-          name: newUser.rows[0].name,
-          surname: newUser.rows[0].surname,
-          email: newUser.rows[0].email,
-          role: newUser.rows[0].role
-      };
-      
-      const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
-      
-      res.cookie('authToken', token, {
-          secure: process.env.NODE_ENV === 'production',
-          httpOnly: true,
-          maxAge: 86400000,
-          sameSite: 'strict'
-      });
 
-      res.status(201).json({ 
-          message: 'Регистрация успешна',
-          user: {
-            id: newUser.rows[0].id,
-            name: newUser.rows[0].name,
-            surname: newUser.rows[0].surname,
-            email: newUser.rows[0].email,
-            role: newUser.rows[0].role
-          },
-          token: token
-      });
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: 'Пользователь не найден' });
+    }
 
+    const userData = result.rows[0];
+
+    res.json(userData);
   } catch (error) {
-      console.error('Ошибка при регистрации:', error);
-      res.status(500).json({ message: 'Ошибка сервера при регистрации' });
+    console.error('Ошибка получения данных пользователя:', error);
+    res.status(500).json({ message: 'Ошибка сервера' });
   }
+});
+
+app.post('/register', async (req, res) => {
+    const { name, surname, email, password, address = '', phone = '' } = req.body;
+
+    try {
+        const userExists = await pool.query(
+            'SELECT id FROM users WHERE email = $1',
+            [email]
+        );
+
+        if (userExists.rows.length > 0) {
+            return res.status(400).json({ message: 'Пользователь с таким email уже существует' });
+        }
+
+        const saltRounds = 10;
+        const passwordHash = await bcrypt.hash(password, saltRounds);
+
+        const newUserResult = await pool.query(
+            'INSERT INTO users (name, surname, email, password_hash, role, address, phone) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, name, surname, email, role',
+            [name, surname, email, passwordHash, 1, address, phone]
+        );
+
+        const newUser = newUserResult.rows[0];
+
+        const payload = {
+            id: newUser.id,
+            name: newUser.name,
+            surname: newUser.surname,
+            email: newUser.email,
+            role: newUser.role,
+            address: address || '',
+            phone: phone || ''
+        };
+
+        const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
+
+        res.cookie('authToken', token, {
+            secure: process.env.NODE_ENV === 'production',
+            httpOnly: true,
+            maxAge: 86400000,
+            sameSite: 'strict'
+        });
+        res.status(201).json({ 
+            message: 'Регистрация успешна',
+            user: {
+                id: newUser.id,
+                name: newUser.name,
+                surname: newUser.surname,
+                email: newUser.email,
+                role: newUser.role,
+                address: address || '',
+                phone: phone || ''
+            },
+            token: token
+        });
+
+    } catch (error) {
+        console.error('Ошибка при регистрации:', error);
+        res.status(500).json({ message: 'Ошибка сервера при регистрации' });
+    }
 });
 
 app.post('/login', async (req, res) => {
@@ -135,12 +206,14 @@ app.post('/login', async (req, res) => {
       }
 
       const payload = {
-          id: user.id,
-          name: user.name,
-          surname: user.surname,
-          email: user.email,
-          role: user.role
-      };
+            id: newUser.id,
+            name: newUser.name,
+            surname: newUser.surname,
+            email: newUser.email,
+            role: newUser.role,
+            address: address || '',
+            phone: phone || ''
+        };
 
       const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
       
@@ -162,7 +235,6 @@ app.post('/login', async (req, res) => {
       res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
-
 app.get('/all-food', async (req, res) => {
     try {
         const pizzas = await fs.promises.readFile(path.join(__dirname, '..', 'public', 'dataset', 'pizza.json'), 'utf8');

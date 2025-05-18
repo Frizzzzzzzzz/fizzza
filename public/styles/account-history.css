@@ -331,7 +331,7 @@
     font-family: 'Manrope-Regular', sans-serif;
     font-size: 18px;
     font-weight: 400;
-    color: #4C535F;
+    color: #EE7D43;
   }
   .settings {
     display: flex;
@@ -341,9 +341,8 @@
     gap: 15px;
     font-family: 'Manrope-Regular', sans-serif;
     font-size: 18px;
-    color: #EE7D43;
     font-weight: 700;
-    
+    color: #4C535F;
   }
   .logout {
     display: flex;

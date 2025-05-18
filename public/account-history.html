@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/account-history.css">
+    <script src="./scripts/account-history.js"></script>
     <title>account-settings</title>
 </head>
 <body>
@@ -22,15 +23,15 @@
                <div class="btns-cont-2">
                 <button class="search-btn"><img src="assets/akar-icons_search.png" alt=""></button>
                 <button class="wishlist-btn"><img src="assets/Group 2.png" alt=""></button>
-                <button class="sign-in-btn"><img src="assets/carbon_login.png" alt="">Войти</button>
+                <button class="sign-in-btn" onclick="window.location.href='/settings.html'"><img src="assets/carbon_login.png" alt="">Войти</button>
                </div>
             </nav>
         </header>
         <section class="content-container">
             <aside>
                 <div class="twobuttons">
-                    <button class="history"><img src="../public/assets/activity.svg" alt="">Мои заказы</button>
-                    <button class="settings"><img src="../public/assets/setting-2.svg" alt="">Настройки</button>
+                    <button class="history" onclick="window.location.href='/history.html'"><img src="../public/assets/activity.svg" alt="">Мои заказы</button>
+                    <button class="settings" onclick="window.location.href='/settings.html'"><img src="../public/assets/setting-2.svg" alt="">Настройки</button>
                 </div>
                 <button class="logout"><img src="../public/assets/logout.svg" alt="">Выйти из аккаунта</button>
             </aside>

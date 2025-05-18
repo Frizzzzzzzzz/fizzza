@@ -20,7 +20,7 @@
            <div class="btns-cont-2">
             <button class="search-btn"><img src="assets/akar-icons_search.png" alt=""></button>
             <button class="wishlist-btn" onclick="window.location.href='/basket.html'"><img src="assets/Group 2.png" alt=""></button>
-            <button class="sign-in-btn"><img src="assets/carbon_login.png" alt="">Войти</button>
+            <button class="sign-in-btn" onclick="window.location.href='/settings.html'"><img src="assets/carbon_login.png" alt="">Войти</button>
            </div>
         </nav>
     </header>
@@ -85,23 +85,16 @@
                     <div class="two-textareas">
                         <div class="textarea-1">
                             <p>Ваше имя*</p>
-                            <textarea placeholder="Укажите имя" required></textarea>
+                            <textarea placeholder="Укажите имя" class="name-field"></textarea>
                         </div>
                         <div class="textarea-2">
                             <p>Ваш телефон*</p>
-                            <textarea placeholder="+7 (___) ___-__-__" required></textarea>
+                            <textarea placeholder="+7 (___) ___-__-__" class="phone-field"></textarea>
                         </div>
                     </div>
                     <div class="address-textarea-block">
                         <p>Адрес доставки</p>
                         <textarea class="address-textarea" placeholder="Не нужно заполнять при самовывозе"></textarea>
-                    </div>
-                    <div class="date-of-receipt-section">
-                        <p>Дата получения</p>
-                        <div class="date-of-receipt-block">
-                            <p class="time">12:00 - 16:00</p>
-                        <button><img src="assets\Vector2.png" alt=""></button>
-                        </div>
                     </div>
                     <div class="commentary-section">
                         <p>Комментарий к заказу</p>

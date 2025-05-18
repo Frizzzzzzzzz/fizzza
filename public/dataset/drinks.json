@@ -1,36 +1,5 @@
 [
     {
-        "name": "Кока-Кола",
-        "price": "100 рублей",
-        "image": "dataset/images/drink1.png",
-        "rating": 4.5
-    },
-    {
-        "name": "Фанта",
-        "price": "100 рублей",
-        "image": "dataset/images/drink2.png",
-        "rating": 3.5
-    },
-    {
-        "name": "Сок апельсиновый",
-        "price": "150 рублей",
-        "image": "dataset/images/drink3.png",
-        "rating": 4.6
-    },
-    {
-        "name": "Минеральная вода",
-        "price": "80 рублей",
-        "image": "dataset/images/drink4.png",
-        "rating": 4.3
-    },
-    {
-        "name": "Лимонад",
-        "price": "120 рублей",
-        "image": "dataset/images/drink5.png",
-        "rating": 4.5
-    }
-[
-    {
         "name": "Облепиховый сок",
         "price": "100 рублей",
         "image": "dataset/drinks/1701262797984-800x577.png",

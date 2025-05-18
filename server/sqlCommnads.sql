@@ -4,9 +4,29 @@ CREATE TABLE users (
     surname VARCHAR(255),
     email VARCHAR(255),
     password_hash VARCHAR(255),
-	role VARCHAR(255),
+    phone VARCHAR(255),
+    address VARCHAR(255),
+    role VARCHAR(255),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    delivery_address TEXT,
+    payment_method VARCHAR(20),
+    status VARCHAR(20) DEFAULT 'pending',
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE order_items (
+    id SERIAL PRIMARY KEY,
+    order_id INTEGER REFERENCES orders(id),
+    product_name VARCHAR(255),
+    quantity INTEGER,
+    price DECIMAL(10, 2)
 );
 
 CREATE TABLE feedback (
