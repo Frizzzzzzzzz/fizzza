@@ -204,6 +204,7 @@ app.post('/login', async (req, res) => {
       if (!isPasswordValid) {
           return res.status(401).json({ message: 'Неверный пароль' });
       }
+      
 
       const payload = {
             id: newUser.id,
