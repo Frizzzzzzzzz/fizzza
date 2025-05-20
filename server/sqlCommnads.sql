@@ -37,7 +37,22 @@ CREATE TABLE feedback (
     address VARCHAR(255),
     date VARCHAR(20),
     time VARCHAR(20),
-    description TEXT
+    description TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE comment (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    title TEXT,
+    description TEXT,
+    rating VARCHAR(100),
+    city VARCHAR(100),
+);
+
+
+ALTER TABLE orders
+ADD CONSTRAINT fk_orders_users
+FOREIGN KEY (user_id) 
+REFERENCES users(id);
