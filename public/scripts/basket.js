@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const response = await fetch('/user');
         if (response.ok) {
             const data = await response.json();
+            localStorage.setItem('userId', data.id);
             return data;
         } else {
             console.error('Ошибка получения данных пользователя');
@@ -282,3 +283,63 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.place-an-order-btn')?.addEventListener('click', placeOrder);
+    document.querySelector('.place-an-order-btn-main')?.addEventListener('click', placeOrder);
+});
+
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+async function placeOrder() {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+        alert('Пожалуйста, войдите в систему, чтобы оформить заказ.');
+        return;
+    }
+
+    const deliveryAddress = document.querySelector('.address-textarea').value;
+    const paymentMethod = 'Наличными при получении';
+    const comment = document.querySelector('.commentary-textarea').value;
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (!cart.length) {
+        alert('Пожалуйста, добавьте предметы в корзину, чтобы оформить заказ.');
+        return;
+    }
+    const items = cart.map(item => ({
+        name: item.name,
+        price: item.price.split(' ')[0],
+        quantity : item.quantity
+    }));
+
+    const orderData = {
+        userId,
+        deliveryAddress,
+        paymentMethod,
+        comment,
+        items
+    };
+
+    try {
+        const response = await fetch('/submit-order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('Заказ успешно оформлен! Номер заказа: ' + result.orderId);
+            localStorage.removeItem('cart');
+            window.location.href = '/main.html';
+        } else {
+            alert('Ошибка оформления заказа: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Ошибка при оформлении заказа:', error);
+        alert('Ошибка сервера. Попробуйте позже.');
+    }
+}

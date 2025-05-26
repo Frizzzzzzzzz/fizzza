@@ -184,6 +184,42 @@ app.post('/register', async (req, res) => {
     }
 });
 
+app.post('/submit-order', async(req,res)=>{
+  const { userId,deliveryAddress,paymentMethod , comment , items}= req.body;
+
+  if(!userId || !deliveryAddress || !paymentMethod || !items){
+     returnres.status(400).json({message:'Некорректные данные'});
+  }
+
+  try{
+     const fullPrice = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+     const result= await pool.query(
+       `INSERT INTO orders (user_id , delivery_address , payment_method , status , comment , full_price, created_at)
+       VALUES ($1,$2,$3,$4,$5,$6,NOW()) RETURNING id`,
+       [userId , deliveryAddress , paymentMethod ,'pending' , comment, fullPrice]
+     );
+
+     const orderId= result.rows[0].id;
+     if(Array.isArray(items)){
+       for(const item of items){
+         await pool.query(
+           `INSERT INTO order_items (order_id , product_name , quantity, price)
+           VALUES ($1,$2,$3,$4)`,
+           [orderId , item.name , item.quantity, item.price]
+         );
+       }
+     }
+
+     res.json({message:'Заказ успешно оформлен', orderId});
+     
+   } catch(err){
+     console.error('Ошибка при сохранении заказа:',err);
+     res.status(500).json({message:'Ошибка сервера'});
+   }
+});
+
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -204,16 +240,15 @@ app.post('/login', async (req, res) => {
       if (!isPasswordValid) {
           return res.status(401).json({ message: 'Неверный пароль' });
       }
-      
 
       const payload = {
-            id: newUser.id,
-            name: newUser.name,
-            surname: newUser.surname,
-            email: newUser.email,
-            role: newUser.role,
-            address: address || '',
-            phone: phone || ''
+            id: user.id,
+            name: user.name,
+            surname: user.surname,
+            email: user.email,
+            role: user.role,
+            address: user.address || '',
+            phone: user.phone || ''
         };
 
       const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });

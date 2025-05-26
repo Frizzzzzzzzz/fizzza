@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return JSON.parse(jsonPayload);
         } catch (e) {
             console.error('Error parsing JWT:', e);
-                return null;
+            return null;
         }
     }
     
@@ -38,15 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const authToken = localStorage.getItem('authToken');
         const signInBtn = document.querySelector('.sign-in-btn');
         const userData = parseJwt(authToken);
-        if (authToken && signInBtn) {
-            if (userData && userData.name) {
+
+        if (authToken && userData) {
+            if (userData.name) {
                 const firstName = userData.name.split(' ')[0];
                 const img = signInBtn.querySelector('img');
                 signInBtn.innerHTML = img ? img.outerHTML + firstName : firstName;
             } else {
-                const img = signInBtn.querySelector('img');
-                signInBtn.innerHTML = img ? img.outerHTML + 'Личный кабинет' : 'Личный кабинет';
+                signInBtn.innerHTML = 'Личный кабинет';
             }
+        } else {
+            signInBtn.innerHTML = 'Войти';
         }
     }
     

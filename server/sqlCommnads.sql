@@ -15,9 +15,10 @@ CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id),
     delivery_address TEXT,
-    payment_method VARCHAR(20),
-    status VARCHAR(20) DEFAULT 'pending',
+    payment_method VARCHAR(255),
+    status VARCHAR(255) DEFAULT 'pending',
     comment TEXT,
+    full_price VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -26,7 +27,7 @@ CREATE TABLE order_items (
     order_id INTEGER REFERENCES orders(id),
     product_name VARCHAR(255),
     quantity INTEGER,
-    price DECIMAL(10, 2)
+    price VARCHAR(255)
 );
 
 CREATE TABLE feedback (
