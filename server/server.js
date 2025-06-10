@@ -21,11 +21,11 @@ app.use('/users', express.static('users'));
 app.use(express.urlencoded({ extended: true }));
 
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "Frizz",
-  password: "123321",
-  port: "5432",
+  user: process.env.DB_USER || "postgres",
+  host: process.env.DB_HOST || "localhost",
+  database: process.env.DB_NAME || "Frizz",
+  password: process.env.DB_PASSWORD || "123321",
+  port: process.env.DB_PORT || "5432",
 });
 
 const authMiddleware = async (req, res, next) => {
@@ -161,7 +161,7 @@ app.post('/register', async (req, res) => {
         res.cookie('authToken', token, {
             secure: process.env.NODE_ENV === 'production',
             httpOnly: true,
-            maxAge: 86400000,
+            maxAge: 60000,
             sameSite: 'strict'
         });
         res.status(201).json({ 
@@ -256,7 +256,7 @@ app.post('/login', async (req, res) => {
       res.cookie('authToken', token, {
           secure: process.env.NODE_ENV === 'production',
           httpOnly: true,
-          maxAge: 86400000,
+          maxAge: 60000,
           sameSite: 'strict'
       });
 
